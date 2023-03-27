@@ -44,6 +44,7 @@ import { BidiModule } from '@angular/cdk/bidi';
 import { ObserversModule } from '@angular/cdk/observers';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -92,7 +93,8 @@ import { PlatformModule } from '@angular/cdk/platform';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    MatFormFieldModule
   ],
   exports: [
     A11yModule,
@@ -140,7 +142,8 @@ import { PlatformModule } from '@angular/cdk/platform';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule { }

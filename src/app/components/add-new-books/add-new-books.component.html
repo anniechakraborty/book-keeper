@@ -1,1 +1,58 @@
-<p>add-new-books works!</p>
+<h1>Add Books</h1>
+<form (ngSubmit)="onSubmit()">
+
+    <div class="add-form">
+        <div class="book-details">
+            <mat-form-field hintLabel="Max 100 characters" appearance="fill">
+                <mat-label>Book name</mat-label>
+                <input matInput #input maxlength="100" name="bookName" placeholder="Eg : Jane Eyre" [(ngModel)]="bookName">
+                <mat-hint align="end">{{input.value.length}}/100</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Max 100 characters" appearance="fill">
+                <mat-label>Author</mat-label>
+                <input matInput #input maxlength="100" name="author" placeholder="Eg : Charlotte Bronte" [(ngModel)]="author">
+                <mat-hint align="end">{{input.value.length}}/100</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Select Book Type</mat-label>
+                <mat-select  (selectionChange)="changeBook($event.value)">
+                <mat-option value="Fiction">Fiction</mat-option>
+                <mat-option value="HistoricalFiction">Historical Fiction</mat-option>
+                <mat-option value="Adventure">Adventure</mat-option>
+                <mat-option value="Detective">Detective</mat-option>
+                <mat-option value="Fantasy">Fantasy</mat-option>
+                <mat-option value="Thriller">Thriller</mat-option>
+                <mat-option value="TrueCrime">True Crime</mat-option>
+                <mat-option value="Romance">Romance</mat-option>
+                <mat-option value="YaFiction">YA Fiction</mat-option>
+                <mat-option value="YaRomance">YA Romance</mat-option>
+                <mat-option value="SelfHelp">Self Help</mat-option>
+                <mat-option value="Autobiography">Autobiography</mat-option>
+                <mat-option value="Biography">Biography</mat-option>
+                <mat-option value="AcademicBook">Academic Book</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="read-dates">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Start Date</mat-label>
+                <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" name="startDate">
+                <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Select End Date</mat-label>
+                <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" name="endDate">
+                <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Review / Description</mat-label>
+            <textarea matInput [(ngModel)]="description" name="description"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Save Book</button>
+    </div>
+</form>

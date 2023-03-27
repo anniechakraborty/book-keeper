@@ -1,9 +1,9 @@
 <div id="navbar">
     <p class="brand-name">Book Keeper</p>
     <div class="menu-options">
-        <a [routerLink]=" '/'">Home</a>
-        <a [routerLink]=" '/addBooks' ">Add New Books</a>
-        <a [routerLink]=" '/viewBooks' ">View Books</a>
+        <a [routerLink]=" '/'" [routerLinkActive]="['is-active']">Home</a>
+        <a [routerLink]="'/addBooks'" [routerLinkActive]="['is-active']">Add New Books</a>
+        <a [routerLink]="'/viewBooks'" [routerLinkActive]="['is-active']">View Books</a>
     </div>
 </div>
 <hr>
