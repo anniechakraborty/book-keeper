@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingMoudle } from './app-routing.module';
+import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
 import { NavbarHeaderComponent } from './components/navbar-header/navbar-header.component';
-import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { MaterialModule } from './material.module';
   ],
   imports: [
     BrowserModule,
-    MaterialModule
+    MaterialModule,
+    AppRoutingMoudle
   ],
   providers: [],
   bootstrap: [AppComponent]
