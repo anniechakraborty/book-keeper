@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/material.module';
 import { RouterModule, Routes } from '@angular/router';
 // import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { ViewBooksComponent } from './view-books.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
     {
@@ -18,6 +20,8 @@ const routes: Routes = [
     ],
     imports: [
         MaterialModule,
+        HttpClientModule,
+        CommonModule,
         // BrowserModule,
         RouterModule.forChild(routes)
     ],

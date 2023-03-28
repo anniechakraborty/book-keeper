@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingMoudle } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarHeaderComponent } from './components/navbar-header/navbar-header.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,11 @@ import { NavbarHeaderComponent } from './components/navbar-header/navbar-header.
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AppRoutingMoudle
+    AppRoutingMoudle,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 import psycopg2
 from datetime import datetime, timezone
 from dotenv import load_dotenv
+from flask_cors import CORS
+from collections import defaultdict
 
 # SQL Codes
 CREATE_BOOK_TABLE = (
@@ -29,12 +31,10 @@ GET_BOOK_BY_ID = ("SELECT * FROM books WHERE id = %s;")
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
+
 url = os.getenv('DATABASE_URL')
 connection = psycopg2.connect(url)
-
-@app.route('/', methods=['GET'])
-def home():
-    return {"message" : "hello world"}
 
 @app.route('/api/post', methods=['POST'])
 def create_new_book():
@@ -74,8 +74,32 @@ def allBooks():
         with connection.cursor() as cursor:
             cursor.execute(GET_ALL_BOOKS)
             record = cursor.fetchall()
-            print(record)
-    return jsonify(record)
+            print(record, type(record))
+    # for i in record:
+    #     result = {
+    #         "id": record[i][0],
+    #         "name": record[i][1],
+    #         "author" : record[i][2],
+    #         "description" : record[i][3],
+    #         "bookType" : record[i][4],
+    #         "startDate" : record[i][5],
+    #         "endDate" : record[i][6]
+    #     }
+    # print(result)
+
+    e = defaultdict(list)
+    for element in record:
+        e[element[0]].append({
+            'id': element[0],
+            'name': element[1], 
+            'author': element[2], 
+            'review': element[3], 
+            'bookType': element[4],
+            'startDate': element[5],
+            'endDate': element[6]
+            })
+
+    return jsonify(e)
 
 @app.route('/api/book/<int:book_id>', methods=['GET'])
 def get_book(book_id):

@@ -1,1 +1,21 @@
-<p>view-books works!</p>
+<div *ngFor="let book of books | keyvalue">
+    <mat-card class="card" *ngFor="let data of book.value">
+        <mat-card-header>
+          <mat-card-subtitle> {{ data.bookType }} </mat-card-subtitle>
+          <mat-card-title> {{ data.name }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Written by {{ data.author }} </p>
+          <p *ngIf="data.startDate != null && data.endDate != null">Read between {{ data.startDate }} and {{ data.endDate }} </p>
+          <h4>Review</h4>
+          <p> {{ data.review }} </p>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>FAV</button>
+          <button mat-button>EDIT</button>
+          <button mat-button>REMOVE</button>
+        </mat-card-actions>
+      </mat-card>
+      
+</div>
